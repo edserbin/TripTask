@@ -1,0 +1,41 @@
+Spark job that has trip.csv as input from https://www.kaggle.com/benhamner/sf-bay-area-bike-share
+output: trip_events.parquet - contains split trip evens with field event_action(START, END) ordered by event_time
+for example, record A will be split to B, C:
+
+A) id = 4576,
+duration = 63,
+start_date = 8/29/2013 14:13,
+start_station_name = "start stantion name",
+start_station_id = 66,
+end_date = 8/29/2013 14:44
+end_station_name = "end station name",
+end_station_id = 68,
+bike_id = 520,
+subscription_type = "Subscriber",
+zip_code = xxxx
+
+B) id = 4576,
+duration = 63,
+event_time = 8/29/2013 14:13,
+event_action = "START",
+station_name = "start stantion name",
+station_id = 66
+bike_id = 520,
+subscription_type = "Subscriber",
+zip_code = xxxx
+
+C) id = 4576,
+duration = 63,
+event_time = 8/29/2013 14:44,
+event_action = "END",
+station_name = "end station name",
+station_id = 68
+bike_id = 520,
+subscription_type = "Subscriber",
+zip_code = xxxx
+
+***
+data should be read from s3 and be also written to s3
+
+
+
