@@ -125,12 +125,11 @@ if __name__ == "__main__":
     tripTask = TripTask("s3a://onexlab/trip.csv")
 
     rdd = tripTask.split_events_rdd()
-    rdd.collect()
-    for r in rdd.collect():
-        print(r)
     tripTask.save_rdd_into_file(saved_rdd=rdd, header=tripTask.ANSWER_HEADER, saved_format="parquet", folder_name="s3a://onexlab/result_parquet_rdd")
+    # for r in rdd.collect():
+    #     print(r)
 
     df = tripTask.split_events_df()
-    df.show(truncate=False)
     tripTask.save_df_into_file(data_frame=df, saved_format="parquet", folder_name="s3a://onexlab/result_parquet_df")
+    # df.show(truncate=False)
 
